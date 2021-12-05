@@ -1,7 +1,7 @@
 {
   "name": "@nodestrap/react-router-link",
-  "version": "4.0.0",
-  "description": "A react-router Link compatible for use in Nodestrap components.",
+  "version": "4.0.1",
+  "description": "A react-router Link compatible to use with Nootstrap components in harmony.",
   "type": "module",
   "main": "dist/ReactRouterLink.js",
   "types": "dist/ReactRouterLink.d.ts",
