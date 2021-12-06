@@ -24,9 +24,9 @@ export const ReactRouterLink = React.forwardRef(function LinkWithRef(props, ref)
     // handlers:
     const internalHandleClick = useLinkClickHandler(to, { replace, state, target });
     const handleClick = (e) => {
-        props.onClick?.(e);
+        props.onClick?.(e); // keep original onClick on <ReactRouterLink onClick={...} />
         if (!e.defaultPrevented && !reloadDocument)
-            internalHandleClick(e);
+            internalHandleClick(e); // our click handler
     };
     // jsx:
     if (component) {
@@ -39,7 +39,10 @@ export const ReactRouterLink = React.forwardRef(function LinkWithRef(props, ref)
                 target,
             } : {}),
             // events:
-            onClick: handleClick,
+            onClick: ((e) => {
+                component.props.onClick?.(e); // keep original onClick on <FooComponent onClick={...} />
+                handleClick(e);
+            }),
         });
     } // if
     return (
